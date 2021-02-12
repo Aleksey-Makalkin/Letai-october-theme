@@ -1,0 +1,40 @@
+title = "Обработчик формы"
+url = "/amoapi/send"
+is_hidden = 0
+==
+<?php
+use Atamanovvictor\Cars\Classes\CarHelper;
+
+function onStart(){
+    	
+	App::setLocale('ru'); // Выставляем локализацию сообщений для валидатора
+	
+
+    $carClient = new CarHelper();
+	
+    $start_date =  trim(e(post('start-date')));
+    $end_date = trim(e(post('end-date')));
+    $car = trim(e(post('car')));
+    $tel = trim(e(post('phone')));
+    $deposit = trim(e(post('deposit')));
+    $price = trim(e(post('total-cost')));
+    $url = trim(e(post('url')));
+    $utmdata=[];
+    $utmdata['yclid'] = trim(e(post('google-id')));
+    $utmdata['gclid'] = trim(e(post('yandex-id')));
+    
+    try {
+        $carClient->addLead($start_date, $end_date, $car, $tel, $deposit, $price, $url, $utmdata); 
+    } catch (AmoCRMApiException $e) {
+        	$this['alerts'] =  $e;
+    }
+}
+?>
+==
+{% if alerts %}
+	{% for alert in alerts %}
+	  <div class="error">{{ alert }}</div>
+	{% endfor %}
+{% else %}
+	<div class="message">Заявка принята!</div>
+{% endif %}

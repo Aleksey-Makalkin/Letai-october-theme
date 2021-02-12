@@ -1,0 +1,441 @@
+title = "Letai"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[builderList]
+modelClass = "Atamanovvictor\Cars\Models\Cars"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "id"
+noRecordsMessage = "No records found"
+detailsPage = "home"
+detailsKeyColumn = "id"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+use Atamanovvictor\Cars\Classes\CarHelper;
+
+function onStart()
+{
+$cars = new CarHelper();
+$this['cars'] = $cars->getCar();
+}
+?>
+==
+<div class="body__container">
+
+    <header class="header limiting-container">
+        <div class="header__logo">
+            <img src="{{ 'assets/img/logo.png'|theme }}" alt="LETAI" class="logo-img">
+            <p class="header__logo-text">Аренда premium автомобилей</p>
+        </div>
+        <nav class="header__navigation">
+            <p class="header__navigation-item header__navigation-item__cars">Автопарк</p>
+            <p class="header__navigation-item header__navigation-item__terms">Условия</p>
+            <p class="header__navigation-item header__navigation-item__partner">Партнёрам</p>
+        </nav>
+        <div class="header__contacts">
+            <a href="tg://resolve?domain=letai_pro_bot" class="header__contacts-btn contacts-btn">
+                <img src="{{ 'assets/img/telegramm.svg'|theme }}" alt="telegramm" class="header__contacts-img">
+            </a>
+            <a href="tel:+78622777538" class="header__contacts-btn contacts-btn">
+                <img src="{{ 'assets/img/phone.svg'|theme }}" alt="phone" class="header__contacts-img">
+            </a>
+            <p class="header__contacts-phone contacts-phone">+7 (862) 277 75-38</p>
+        </div>
+        <div class="menu-btn"></div>
+        <div class="menu-popup">
+            <div class="menu-popup__close">
+                <img src="{{ 'assets/img/menu-close.svg'|theme }}" alt="X">
+            </div>
+            <p class="menu-popup__title">Меню</p>
+            <div class="menu-popup__container">
+                <div class="menu-popup__cars">
+                    <p class="menu-popup__cars-item menu-popup__item">Audi Q7</p>
+                    <p class="menu-popup__cars-item menu-popup__item">Jeep Wrangler Diesel</p>
+                    <p class="menu-popup__cars-item menu-popup__item">BMW 325 Cabrio</p>
+                    <p class="menu-popup__cars-item menu-popup__item">BMW Z4</p>
+                    <p class="menu-popup__cars-item menu-popup__item">Mercedes-Benz SLK 200</p>
+                    <p class="menu-popup__cars-item menu-popup__item">Porsche Panamera GTS</p>
+                    <p class="menu-popup__cars-item menu-popup__item">Chrysler Prowler</p>
+                </div>
+                <div class="menu-popup__hr hr-light"></div>
+                <div class="menu-popup__rest">
+                    <p class="menu-popup__rest-item menu-popup__item">условия</p>
+                    <p class="menu-popup__rest-item menu-popup__item menu-popup__rest-item_partner">партнерам</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+    
+
+    <main class="main">
+        <div class="main__header">
+            <h1 class="main__header-title large-title">Подача в пределах Сочи бесплатно</h1>
+            <div class="main__header-hr hr"></div>
+            <button class="main__header-button button">Выбрать автомобиль</button>
+        </div>
+        <div class="main__body limiting-container">
+            <h2 class="main__title large-title" id="car-park">Автопарк</h2>
+            <div class="main__body-hr hr"></div>
+            <div class="car-container">
+            
+            {% for record in records %}
+            
+                <div class="car-container__item-container">
+                    <div class="car-container__item">
+                        <div class="car-container__header">
+                            <div class="car-container__status car-container__status_true">Свободен</div>
+                            <div class="car-container__price">
+                                <img src="{{ 'assets/img/rub.svg'|theme }}" alt="₽" class="car-container__price-icon">
+                                <p class="car-container__price-value">от {{ record.price_5 }}/сутки</p>
+                            </div>
+                        </div>
+                        <div class="car-container__main">
+                            <img src="{{ record.image|media }}" alt="Car" class="car-container__item-image">
+                            <div class="car-container__main-description">
+                                <h3 class="car-container__title medium-title">{{ record.name }}</h3>
+                                <div class="car-container__description-item">
+                                    <p class="car-container__description-parameter">
+                                        Коробка передач
+                                    </p>
+                                    <p class="car-container__description__value">
+                                        {{ record.transmission }}
+                                    </p>
+                                </div>
+                                <div class="car-container__description-item">
+                                    <p class="car-container__description-parameter">
+                                        Привод
+                                    </p>
+                                    <p class="car-container__description__value">
+                                        {{ record.drive }}
+                                    </p>
+                                </div>
+                                <div class="car-container__description-item">
+                                    <p class="car-container__description-parameter">
+                                        Л.с:
+                                    </p>
+                                    <p class="car-container__description__value">
+                                        {{ record.hp }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="car-container__button button">Забронировать</button>
+                        <div style="display: none" class="car-item-unique-number-and-name">
+                            {{ record.name }} {{ record.number }}
+                        </div>
+                    </div>
+                </div>
+                
+            {% endfor %}
+                
+            </div>
+        </div>
+        <div class="main__footer limiting-container">
+            <div class="additionally">
+                <div class="additionally__description">
+                    <h2 class="main__title large-title">Наши преимущества и доп. услуги</h2>
+                    <div class="additionally__description-specification">
+                        <div class="additionally__hr hr-light"></div>
+                        <p class="additionally__text">
+                            Все авто оборудованы селфи-палкой, креплением для телефона,
+                            для внедорожников креплениями для лыж и влажными салфетками.
+                        </p>
+                    </div>
+                </div>
+                <div class="additionally__services">
+                    <div class="additionally__container">
+                        <div class="additionally__item-container">
+                            <div class="additionally__item additionally__item_one">
+                                <img src="{{ 'assets/img/01.png'|theme }}" alt="01" class="additionally__item-num">
+                                <p class="additionally__item-txt">Без стажа вождения</p>
+                                <div class="additionally__item-hr hr-light"></div>
+                            </div>
+                        </div>
+                        <div class="additionally__item-container">
+                            <div class="additionally__item additionally__item_two">
+                                <img src="{{ 'assets/img/02.png'|theme }}" alt="02" class="additionally__item-num">
+                                <p class="additionally__item-txt">Поддержка в личном кабинете</p>
+                                <div class="additionally__item-hr hr-light"></div>
+                            </div>
+                        </div>
+                        <div class="additionally__item-container">
+                            <div class="additionally__item additionally__item_three">
+                                <img src="{{ 'assets/img/03.png'|theme }}" alt="03" class="additionally__item-num">
+                                <p class="additionally__item-txt">Доставка авто по адресу</p>
+                                <div class="additionally__item-hr hr-light"></div>
+                            </div>
+                        </div>
+                        <div class="additionally__item-container">
+                            <div class="additionally__item additionally__item_four">
+                                <img src="{{ 'assets/img/04.png'|theme }}" alt="04" class="additionally__item-num">
+                                <p class="additionally__item-txt">Личный Водитель</p>
+                                <div class="additionally__item-hr hr-light"></div>
+                            </div>
+                        </div>
+                        <div class="additionally__item-container">
+                            <div class="additionally__item additionally__item_one">
+                                <img src="{{ 'assets/img/05.png'|theme }}" alt="05" class="additionally__item-num">
+                                <p class="additionally__item-txt">Экскурсия с водителем</p>
+                                <div class="additionally__item-hr hr-light"></div>
+                            </div>
+                        </div>
+                        <div class="additionally__item-container">
+                            <div class="additionally__item additionally__item_one">
+                                <img src="{{ 'assets/img/06.png'|theme }}" alt="06" class="additionally__item-num">
+                                <p class="additionally__item-txt">Фотосессия профессиональная</p>
+                                <div class="additionally__item-hr hr-light"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer limiting-container footer__limiting-container">
+        <div class="main__ampersand-bg"></div>
+        <div class="footer__logo">
+            <img src="{{ 'assets/img/logo-white.png'|theme }}" alt="LETAI" class="logo-img footer__logo-img">
+            <p class="footer__logo-subtitle">ОГРН 578834452</p>
+        </div>
+        <nav class="footer__nav">
+            <div class="footer__nav-car">
+                <a href="#" class="footer__nav-car-link">Audi Q7</a>
+                <a href="#" class="footer__nav-car-link">Jeep Wrangler Diesel</a>
+                <a href="#" class="footer__nav-car-link">BMW 325 Cabrio</a>
+                <a href="#" class="footer__nav-car-link">BMW Z4</a>
+                <a href="#" class="footer__nav-car-link">Mercedes-Benz SLK 200</a>
+                <a href="#" class="footer__nav-car-link">Porsche Panamera GTS</a>
+                <a href="#" class="footer__nav-car-link">Chrysler Prowler</a>
+            </div>
+            <div class="footer__nav-info">
+                <a href="#" class="footer__nav-info-link">Публичная оферта</a>
+            </div>
+        </nav>
+        <div class="footer__contact">
+            <div class="footer__phone">
+                <p class="footer-phone-btn contacts-btn">
+                    <img src="{{ 'assets/img/footer-phone.svg'|theme }}" alt="call" class="footer__phone-icon">
+                </p>
+                <p class="footer__contacts-phone contacts-phone">+7 (862) 277 75-38</p>
+            </div>
+            <div class="footer__other-contacts">
+                <img src="{{ 'assets/img/map-icon.svg'|theme }}" alt="call" class="footer-other-contacts-icon">
+                <p class="footer-other-contacts-txt">Сочи, улица веселая 61</p>
+            </div>
+            <div class="footer-social-contacts">
+                <img src="{{ 'assets/img/footer-instagram.svg'|theme }}" alt="instagram" class="footer-social-contacts__item">
+                <img src="{{ 'assets/img/footer-telegram.svg'|theme }}" alt="telegram" class="footer-social-contacts__item">
+            </div>
+        </div>
+        <a href="https://umark.it/?utm_source=letai.pro&utm_medium=referral&utm_campaign=footerlogo" class="uMarkit">
+            <img src="{{ 'assets/img/umarkit.svg'|theme }}" alt="uMark.it" class="uMarkit-logo">
+            <p class="uMarkit__subtitle">it marketing Agency</p>
+        </a>
+    </footer>
+
+    <div class="container-popup-cars">
+    
+    {% for record in records %}
+    
+        <div class="popup-car limiting-container">
+            <div class="popup-car-container">
+                <header class="popup-car__header">
+                    <div class="popup-car__name-and-status">
+                        <h2 class="popup-car__title large-title">{{ record.name }}</h2>
+                        <div class="popup-car__status popup-car__status_true">
+                            Свободен
+                        </div>
+                    </div>
+                    <div class="popup-car__back popup-car__back-header">Вернуться назад</div>
+                </header>
+                <button class="button popup-car-button-scroll-form">Забронировать</button>
+                <main class="popup-car__main">
+                    <div class="popup-car__slider">
+                        <div class="popup-car__slider-left-btn popup-car__slider-btn"></div>
+                        <div class="popup-car__slider-right-btn popup-car__slider-btn"></div>
+                        <div class="popup-car__images-container">
+                            <img class="popup-car__image" src="{{ record.image_1|media }}">
+                            <img class="popup-car__image" src="{{ record.image_2|media }}">
+                            <img class="popup-car__image" src="{{ record.image_3|media }}">
+                            <img class="popup-car__image" src="{{ record.image_4|media }}">
+                        </div>
+                        <div class="popup-car__slider-dot-container">
+                            <div class="popup-car__slider-dot popup-car__slider-dot_active"></div>
+                            <div class="popup-car__slider-dot"></div>
+                            <div class="popup-car__slider-dot"></div>
+                            <div class="popup-car__slider-dot"></div>
+                        </div>
+                    </div>
+                    <h2 class="popup-car__title popup-car-cost-title large-title">Стоимость</h2>
+                    <div class="price-table">
+                        <div class="price-table__tr price-table__tr-title">
+                            <div class="price-table__td">
+                                1 день
+                            </div>
+                            <div class="price-table__td">
+                                2-6 дня
+                            </div>
+                            <div class="price-table__td">
+                                7-10 дней
+                            </div>
+                            <div class="price-table__td">
+                                10-14 дней
+                            </div>
+                            <div class="price-table__td">
+                                15-30 дней
+                            </div>
+                            <div class="price-table__td price-table__td-important">
+                                Залог
+                            </div>
+                        </div>
+                        <div class="price-table__tr">
+                            <div class="price-table__td price-table__td-cost">
+                                {{ record.price_1 }} ₽
+                            </div>
+                            <div class="price-table__td price-table__td-cost">
+                                {{ record.price_2 }} ₽
+                            </div>
+                            <div class="price-table__td price-table__td-cost">
+                                {{ record.price_3 }} ₽
+                            </div>
+                            <div class="price-table__td price-table__td-cost">
+                                {{ record.price_4 }} ₽
+                            </div>
+                            <div class="price-table__td price-table__td-cost">
+                                {{ record.price_5 }} ₽
+                            </div>
+                            <div class="price-table__td price-table__td-important">
+                                {{ record.deposit }} ₽
+                            </div>
+                        </div>
+                    </div>
+                    <div class="terms">
+                        <h2 class="popup-car__title large-title">
+                            Условия
+                        </h2>
+                        <div class="terms-container">
+                            <div class="terms__item">
+                                <img src="{{ 'assets/img/terms-one.png'|theme }}" class="terms__img">
+                                <div class="terms__txt">
+                                    Возраст от 23 лет
+                                </div>
+                            </div>
+                            <div class="terms__item">
+                                <img src="{{ 'assets/img/terms-two.png'|theme }}" class="terms__img">
+                                <div class="terms__txt">
+                                    Без стажа вождения
+                                </div>
+                            </div>
+                            <div class="terms__item">
+                                <img src="{{ 'assets/img/terms-three.png'|theme }}" class="terms__img">
+                                <div class="terms__txt">
+                                    Пробег 300 км/сутки
+                                </div>
+                            </div>
+                            <div class="terms__item">
+                                <img src="{{ 'assets/img/terms-four.png'|theme }}" class="terms__img">
+                                <div class="terms__txt">
+                                    Выезд в Абхазию запрещен
+                                </div>
+                            </div>
+                        </div>
+                        <div class="terms__button-container">
+                            <button class="terms__phys terms__bth">
+                                <img src="{{ 'assets/img/terms-btn-icon.svg?v100'|theme }}">
+                                Договор оферты
+                            </button>
+                        </div>
+                        <div class="terms__description">
+                            <img src="{{ 'assets/img/terms-description.svg'|theme }}" alt="!" class="terms__description-icon">
+                            <p class="terms__description-txt">
+                                Для удобства наших клиентов мы готовы обсуждать условия
+                            </p>
+                        </div>
+                        <div class="popup-submit-application">
+                            <h2 class="popup-submit-application__title large-title">
+                                Забронировать
+                            </h2>
+                            <form class="popup-car-form">
+                                <div class="popup-car-form__container">
+                                    <div class="popup-car-form__input-container">
+                                        <h6 class="popup-car-form__title">Начало бронирования</h6>
+                                        <input type="text" class="popup-car-form__input popup-car-form__input_date popup-car-form__input_date-one" name="start-date"
+                                               placeholder="23/07/2021" readonly
+                                               onClick="xCal(this, {lang: 'ru', order: 1, delim: '/'})" onKeyUp="xCal()">
+                                    </div>
+                                    <div class="popup-car-form__input-container">
+                                        <h6 class="popup-car-form__title">Конец бронирования</h6>
+                                        <input type="text" class="popup-car-form__input popup-car-form__input_date popup-car-form__input_date-two" name="end-date"
+                                               placeholder="30/08/2021" readonly
+                                               onClick="xCal(this, {lang: 'ru', order: 1, delim: '/'})" onKeyUp="xCal()">
+                                    </div>
+                                    <div class="popup-car-form__input-container">
+                                        <h6 class="popup-car-form__title">Телефон</h6>
+                                        <input type="tel" class="popup-car-form__input popup-car-form__input-phone" name="phone"
+                                               placeholder="+7 (901) 000 00 00" autocomplete="off">
+                                    </div>
+                                    <input type="text" style="display: none" value="{{ record.name }} {{ record.number }}" name="car">
+                                    <input type="text" style="display: none" value="{{ record.deposit }}" name="deposit">
+                                </div>
+                                <div class="personal-information-container">
+                                    <input type="checkbox" class="personal-information-checkbox">
+                                    <p class="personal-information-txt">
+                                        <span class="personal-information-txt-click">Согласен на обработку</span>
+                                        <a href="https://letai.pro/policy" class="policy-link">персональных данных</a>
+                                    </p>
+                                </div>
+                                <button class="popup-car-form__btn-enter button">
+                                    Отправить
+                                </button>
+                            </form>
+                            <button class="popup-car__back popup-car__back-footer">Вернуться назад</button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        {% endfor %}
+        
+    </div>
+
+    <div class="partner-other-container">
+        <div class="partner-bg"></div>
+        <div class="partner">
+            <div class="partner__container">
+                <div class="partner__back">
+                    <img src="{{ 'assets/img/back-icon.svg'|theme }}" alt="X" class="partner__back-icon">
+                </div>
+                <div class="partner__header">
+                    <h2 class="large-title partner__title">зарабатывайте вместе с letai</h2>
+                    <p class="partner__subtitle">Принимаем автомобили в наш автопарк на выгодных условиях</p>
+                </div>
+                <form class="partner__form">
+                    <div class="partner__input-container">
+                        <input type="tel" class="popup-car-form__input partner__input partner__input_phone" name="phone" placeholder="Телефон" autocomplete="off">
+                        <input type="text" class="popup-car-form__input partner__input" name="car" placeholder="Ваш автомобиль" autocomplete="off">
+                    </div>
+                    <button class="button partner__submit-btn" type="submit">Стать партнером</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="error-popup-container"></div>
+
+    <div style="display: none" id="car-data">{{cars}}</div>
+
+</div>

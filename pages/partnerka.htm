@@ -1,0 +1,32 @@
+title = "Партнерка"
+url = "/amoapi/partner"
+is_hidden = 0
+==
+<?php
+use Atamanovvictor\Cars\Classes\CarHelper;
+
+function onStart(){
+    	
+	App::setLocale('ru'); // Выставляем локализацию сообщений для валидатора
+	
+
+    $carClient = new CarHelper();
+    
+    $tel = trim(e(post('phone')));
+    $car = trim(e(post('car')));
+    
+    try {
+        $carClient->addParthner($tel, $car); 
+    } catch (AmoCRMApiException $e) {
+        	$this['alerts'] =  $e;
+    }
+}
+?>
+==
+{% if alerts %}
+	{% for alert in alerts %}
+	  <div class="error">{{ alert }}</div>
+	{% endfor %}
+{% else %}
+	<div class="message">Заявка принята!</div>
+{% endif %}

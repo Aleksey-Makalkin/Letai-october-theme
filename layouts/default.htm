@@ -1,0 +1,59 @@
+description = "Default layout"
+==
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ this.page.title }}</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T3G43B4');</script>
+    <!-- End Google Tag Manager -->
+
+<!--    <meta name="description" content="{{ this.page.meta_description }}">-->
+<!--    <meta name="title" content="{{ this.page.meta_title }}">-->
+    <meta name="author" content="Makalkin Aleksey <makalkin.aleksey.42@gmail.com>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="OctoberCMS">
+    <meta name="google-site-verification" content="6o38vUeIUCYskbxwCZDtCnhSpF-uQAVXXjIhQ4YUryg" />
+
+    <link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+    <!-- lib -->
+    <link rel="stylesheet" href="{{ 'assets/css/datepicker.css'|theme }}">
+    <!-- main -->
+    <link rel="stylesheet" href="{{ 'assets/css/style.css?v424'|theme }}">
+    <link rel="stylesheet" href="{{ 'assets/css/popup.css?v424'|theme }}">
+    <link rel="stylesheet" href="{{ 'assets/css/partner.css?v452'|theme }}">
+    {% styles %}
+</head>
+<body>
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3G43B4"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+{% page %}
+
+
+<!-- Scripts -->
+<!-- lib -->
+<script src="{{ 'assets/js/jQuery.js'|theme }}"></script>
+<script src="{{ 'assets/js/jQueryMask.js'|theme }}"></script>
+<script src="{{ 'assets/js/datepicker.js'|theme }}"></script>
+<!-- main -->
+<script src="{{ 'assets/js/popup.js?v798'|theme }}"></script>
+<script src="{{ 'assets/js/index.js?v798'|theme }}"></script>
+<script src="{{ 'assets/js/partner.js?v816'|theme }}"></script>
+
+{% framework extras %}
+{% scripts %}
+
+</body>
+</html>

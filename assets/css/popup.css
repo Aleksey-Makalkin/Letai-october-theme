@@ -1,0 +1,593 @@
+.popup-car {
+    padding-top: 90px;
+    display: none; /* none */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 110vh;
+    overflow-x: hidden;
+    z-index: 40;
+    background: #272F4A;
+}
+
+.popup-car-container {
+    max-width: 1900px;
+    margin: auto;
+}
+
+.popup-car * {
+    color: #FFFFFF;
+}
+
+.popup-car__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup-car__name-and-status {
+    margin-top: 20px;
+    display: flex;
+    margin-right: 30px;
+}
+
+.popup-car__title {
+    margin-right: 50px;
+}
+
+.popup-car__status {
+    color: rgba(255,255,255,0.8);
+    font-size: 17px;
+    background-color: #0E9C66;
+    padding: 10px 23px;
+    border-radius: 3px;
+}
+
+.popup-car__back {
+    color: rgba(255,255,255,0.8);
+    font-size: 17px;
+    padding: 10px 25px;
+    background: #384161;
+    border-radius: 33px;
+    border: 1px solid rgba(255,255,255,0.8);
+    transition: background 0.4s ease;
+}
+
+.popup-car__back-header {
+    margin-top: 20px;
+}
+
+.popup-car__back:hover {
+    cursor: pointer;
+    background: #24293b;
+}
+
+.popup-car-button-scroll-form {
+    margin-top: 50px;
+}
+
+.popup-car__main {
+    margin-top: 40px;
+}
+
+.popup-car__slider {
+    position: relative;
+    width: 100%;
+    background-color: #384161;
+}
+
+.popup-car__slider-btn {
+    width: 15%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    background-color: #192347;
+    /*opacity: 0.8;*/
+    opacity: 0;
+    background-image: url("../img/popup-car-image-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transition: opacity 0.4s ease;
+}
+
+.popup-car__slider-btn:hover {
+    cursor: pointer;
+}
+
+.popup-car__slider-left-btn {
+    transform: rotate(180deg);
+}
+
+.popup-car__slider-right-btn {
+    left: 100%;
+    margin-left: -15%;
+}
+
+.popup-car__images-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.popup-car__image {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: margin 0.4s ease;
+}
+
+.popup-car__slider-dot-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.popup-car__slider-dot {
+    margin: 0px 12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #555E7D;
+}
+
+.popup-car__slider-dot_active {
+    background: #858EB1;
+}
+
+.popup-car-cost-title {
+    margin-top: 200px;
+}
+
+.price-table {
+    margin-top: 80px;
+}
+
+.price-table__tr {
+    display: flex;
+    height: 120px;
+    border: 1px solid #AE8C73;
+}
+
+.price-table__td {
+    text-align: center;
+    width: 16.666%;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 120px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border-right: 1px solid #AE8C73;
+}
+
+.price-table__td:last-child {
+    border-right: none;
+}
+
+.price-table__td.price-table__td-important {
+    background: rgba(255,255,255,0.15);
+}
+
+.price-table__tr .price-table__td.price-table__td-important {
+    color: #FFFFFF;
+}
+
+.price-table__tr-title .price-table__td {
+    font-family: Bebas;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 39px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #C69B7B;
+}
+
+.terms {
+    margin-top: 180px;
+}
+
+.terms-container {
+    display: flex;
+}
+
+.terms__item {
+    display: flex;
+    margin-right: 70px;
+    max-width: 300px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+.terms__txt {
+    margin-left: 15px;
+}
+
+.terms__button-container {
+    display: flex;
+}
+
+.terms__bth {
+    display: block;
+    width: 388px;
+    height: 76px;
+    background: #323952;
+    border: 3px solid #C69B7B;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-right: 18px;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease;
+}
+
+.terms__bth:hover {
+    cursor: pointer;
+    background: #24293b;
+}
+
+.terms__bth img {
+    margin-right: 10px;
+}
+
+.terms__description {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.terms__description-icon {
+    margin-right: 10px;
+}
+
+.terms__description-txt {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+
+.popup-submit-application {
+    margin-top: 170px;
+}
+
+.popup-car-form {
+    margin-top: 75px;
+}
+
+.popup-car-form__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.popup-car-form__title {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.popup-car-form__input {
+    margin-top: 10px;
+    margin-right: 17px;
+    width: 340px;
+    height: 50px;
+    background: #3B425C;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 0px 20px;
+    font-size: 18px;
+}
+
+.popup-car-form__btn-enter {
+    margin-top: 50px;
+}
+
+.popup-car__back-footer {
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+.personal-information-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: start;
+}
+
+.personal-information-checkbox {
+    display: block;
+    height: 22px;
+}
+
+.personal-information-checkbox:hover {
+    cursor: pointer;
+}
+
+.personal-information-txt-click {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.personal-information-txt {
+    display: block;
+    margin-left: 10px;
+    line-height: 22px;
+}
+
+.personal-information-txt:hover {
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 1500px) {
+    .popup-car__main {
+        margin-top: 30px;
+    }
+
+    .terms__item {
+        font-size: 18px;
+        line-height: 23px;
+        margin: 50px 35px;
+        margin-left: 0px;
+    }
+
+    .terms__img {
+        transform: scale(0.8);
+    }
+
+    .terms__txt {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .popup-car-button-scroll-form {
+        font-size: 19px;
+        width: 260px;
+        height: 50px;
+    }
+
+    .popup-car__slider-dot {
+        width: 8px;
+        height: 8px;
+        margin: 0px 6px;
+    }
+
+    .popup-car-cost-title {
+        margin-top: 120px;
+    }
+
+    .price-table {
+        margin-top: 60px;
+    }
+
+    .terms {
+        margin-top: 100px;
+    }
+
+    .popup-submit-application {
+        margin-top: 110px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .price-table__tr {
+        height: 90px;
+    }
+
+    .price-table__td {
+        line-height: 90px;
+        font-size: 20px;
+    }
+
+    .price-table__tr-title .price-table__td {
+        font-size: 30px;
+    }
+
+    .popup-car-form__input {
+        width: 280px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .popup-car-form__container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .popup-car-form__input-container {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .price-table__tr {
+        height: 70px;
+    }
+
+    .price-table__td {
+        line-height: 70px;
+        font-size: 17px;
+    }
+
+    .price-table__tr-title .price-table__td {
+        font-size: 25px;
+    }
+
+    .terms__item {
+        font-size: 16px;
+        line-height: 20px;
+        margin: 50px 30px;
+        margin-left: 0px;
+    }
+
+    .terms__img {
+        transform: scale(0.7);
+    }
+
+    .terms__txt {
+        margin-left: 0px;
+    }
+
+    .terms__bth {
+        width: 290px;
+        height: 60px;
+        font-size: 15px;
+    }
+
+    .terms__bth img {
+        transform: scale(0.7);
+        margin-right: 3px;
+    }
+
+    .popup-car-form__container {
+        align-items: center;
+    }
+
+    .popup-car-form__input {
+        left: 0px;
+    }
+
+    .popup-car-form__btn-enter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .popup-car__back-footer {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .personal-information-container {
+        margin: auto;
+        width: 280px;
+    }
+}
+
+@media (max-width: 800px) {
+    .price-table__tr {
+        height: 60px;
+    }
+
+    .price-table__td {
+        line-height: 60px;
+        font-size: 15px;
+    }
+
+    .price-table__tr-title .price-table__td {
+        font-size: 19px;
+    }
+
+    .terms-container {
+        margin: 30px 0px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .terms__item {
+        width: 45%;
+        margin: 25px 0px;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 700px) {
+    .popup-car__title {
+        margin-right: 30px;
+    }
+
+    .popup-car__status {
+        font-size: 14px;
+        padding: 6px 13px;
+    }
+
+    .popup-car__back {
+        font-size: 14px;
+        padding: 7px 18px;
+    }
+
+    .terms__button-container {
+        flex-direction: column;
+    }
+
+    .terms__bth {
+        margin-right: 0px;
+    }
+
+    .terms__phys {
+        margin-bottom: 15px;
+    }
+
+    .terms__description-txt {
+        font-size: 16px;
+    }
+
+    .terms__description-icon {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 600px) {
+    .price-table {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 400px;
+    }
+
+    .price-table__tr {
+        flex-direction: column;
+        width: 50%;
+        border: none;
+    }
+
+    .price-table__tr:last-child {
+
+    }
+
+    .price-table__td {
+        width: 100%;
+        border: 1px solid #AE8C73;
+    }
+
+    .price-table__td:last-child {
+        border-right: 1px solid #AE8C73;
+    }
+}
+
+@media (max-width: 450px) {
+    .terms__item {
+        width: 48%;
+    }
+}

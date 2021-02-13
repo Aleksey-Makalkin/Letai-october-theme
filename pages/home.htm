@@ -95,7 +95,7 @@ $this['cars'] = $cars->getCar();
                 <div class="car-container__item-container">
                     <div class="car-container__item">
                         <div class="car-container__header">
-                            <div class="car-container__status car-container__status_true">Свободен</div>
+                            <div class="car-container__status car-container__status_true status_{{ record.fake }}">Свободен</div>
                             <div class="car-container__price">
                                 <img src="{{ 'assets/img/rub.svg'|theme }}" alt="₽" class="car-container__price-icon">
                                 <p class="car-container__price-value">от {{ record.price_5 }}/сутки</p>
@@ -222,22 +222,27 @@ $this['cars'] = $cars->getCar();
             </div>
             <div class="footer__nav-info">
                 <a href="#" class="footer__nav-info-link">Публичная оферта</a>
+                <a href="/policy" class="footer__nav-info-link">Политика конфиденциальности</a>
             </div>
         </nav>
         <div class="footer__contact">
-            <div class="footer__phone">
-                <p class="footer-phone-btn contacts-btn">
-                    <img src="{{ 'assets/img/footer-phone.svg'|theme }}" alt="call" class="footer__phone-icon">
-                </p>
-                <p class="footer__contacts-phone contacts-phone">+7 (862) 277 75-38</p>
-            </div>
-            <div class="footer__other-contacts">
-                <img src="{{ 'assets/img/map-icon.svg'|theme }}" alt="call" class="footer-other-contacts-icon">
-                <p class="footer-other-contacts-txt">Сочи, улица веселая 61</p>
-            </div>
             <div class="footer-social-contacts">
-                <img src="{{ 'assets/img/footer-instagram.svg'|theme }}" alt="instagram" class="footer-social-contacts__item">
-                <img src="{{ 'assets/img/footer-telegram.svg'|theme }}" alt="telegram" class="footer-social-contacts__item">
+                <div class="footer-social-contacts__item-container">
+                    <img src="{{ 'assets/img/footer-phone.svg?v100'|theme }}" alt="call" class="footer__phone-icon">
+                    <p class="footer__contacts-phone footer-contacts-txt">+7 (862) 277 75-38</p>
+                </div>
+                <div class="footer-social-contacts__item-container">
+                    <img src="{{ 'assets/img/map-icon.svg'|theme }}" alt="call" class="footer-other-contacts-icon">
+                    <p class="footer-other-contacts-txt footer-contacts-txt">Сочи, улица веселая 61</p>
+                </div>
+                <div class="footer-social-contacts__item-container">
+                    <img src="{{ 'assets/img/footer-instagram.svg'|theme }}" alt="instagram" class="footer-social-contacts__item">
+                    <p class="footer-social-contacts__txt footer-contacts-txt">Instagram</p>
+                </div>
+                <div class="footer-social-contacts__item-container">
+                    <img src="{{ 'assets/img/footer-telegram.svg'|theme }}" alt="telegram" class="footer-social-contacts__item">
+                    <p class="footer-social-contacts__txt footer-contacts-txt">Telegram</p>
+                </div>
             </div>
         </div>
         <a href="https://umark.it/?utm_source=letai.pro&utm_medium=referral&utm_campaign=footerlogo" class="uMarkit">
@@ -255,7 +260,7 @@ $this['cars'] = $cars->getCar();
                 <header class="popup-car__header">
                     <div class="popup-car__name-and-status">
                         <h2 class="popup-car__title large-title">{{ record.name }}</h2>
-                        <div class="popup-car__status popup-car__status_true">
+                        <div class="popup-car__status popup-car__status_true status_{{ record.fake }}">
                             Свободен
                         </div>
                     </div>
@@ -393,8 +398,9 @@ $this['cars'] = $cars->getCar();
                                 <div class="personal-information-container">
                                     <input type="checkbox" class="personal-information-checkbox">
                                     <p class="personal-information-txt">
-                                        <span class="personal-information-txt-click">Согласен на обработку</span>
-                                        <a href="https://letai.pro/policy" class="policy-link">персональных данных</a>
+                                        <span class="personal-information-txt-click">Согласен с</span>
+                                        <a href="https://letai.pro/policy" class="policy-link">Политикой Конфиденциальности</a><span class="personal-information-txt-click"> и с</span>
+                                        <a href="https://letai.pro/policy" class="policy-link">Условиями Публичной Офферты</a>
                                     </p>
                                 </div>
                                 <button class="popup-car-form__btn-enter button">

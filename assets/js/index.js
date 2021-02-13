@@ -50,6 +50,9 @@ document.querySelectorAll('.popup-car__image').forEach(el => {
     }
 })
 
+// Проверка статуса машины
+document.querySelectorAll('.car-container__status.status_1').forEach(el => el.textContent = 'Занят')
+
 // Маска для телефона
 const customOptions = {
     onKeyPress: function(val, e, field, options) {
@@ -86,7 +89,7 @@ const carData = JSON.parse(document.getElementById('car-data').textContent)
 document.getElementById('car-data').remove()
 const carItemsArr = document.querySelectorAll('.car-container__item')
 
-carItemsArr.forEach(carEl => {
+carItemsArr.forEach((carEl, index) => {
     const uniqueName = carEl.querySelector('.car-item-unique-number-and-name').textContent.trim()
     carData.forEach(dataEl => {
         if (dataEl.custom_fields_values &&
@@ -101,6 +104,11 @@ carItemsArr.forEach(carEl => {
                     carEl.querySelector('.car-container__status').classList.remove('car-container__status_true')
                     carEl.querySelector('.car-container__status').classList.add('car-container__status_false')
                     carEl.querySelector('.car-container__status').textContent = 'Занят'
+
+                    const popupCarEl = document.querySelectorAll('.popup-car')[index]
+                    popupCarEl.querySelector('.popup-car__status').classList.remove('popup-car__status_true')
+                    popupCarEl.querySelector('.popup-car__status').classList.add('popup-car__status_false')
+                    popupCarEl.querySelector('.popup-car__status').textContent = 'Занят'
 
                     if (dataEl.custom_fields_values.find(el => el.field_id === 86191) &&
                         dataEl.custom_fields_values.find(el => el.field_id === 86191).values[0] &&
@@ -196,7 +204,10 @@ form.forEach(el => {
                     formData.append('url', url)
                     formData.append('google-id', getCookie('_gid'))
                     formData.append('yandex-id', getCookie('_ym_uid'))
-                    console.log('URL: ' + formData.get('url') + '\n' + 'Google Id: ' + formData.get('google-id') + '\n' + 'Yandex Id: ' + formData.get('yandex-id'))
+
+                    for (let val of formData.entries()) {
+                        console.log(val)
+                    }
 
                     fetch('https://letai.pro/amoapi/send', {
                         method: 'POST',

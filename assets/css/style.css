@@ -363,7 +363,7 @@ body {
     background: #0E9C66;
 }
 
-.car-container__status_false {
+.car-container__status_false, .car-container__status.status_1 {
     width: 80px;
     background: #D95E5E;
 }
@@ -614,22 +614,32 @@ body {
     display: flex;
 }
 
-.footer-social-contacts {
-    margin-top: 20px;
-}
-
 .footer-social-contacts__item {
-    margin-right: 15px;
     transition: all 0.3s ease;
 }
 
-.footer-other-contacts-txt {
+.footer-social-contacts__item-container {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.footer-social-contacts__txt {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-social-contacts .footer-social-contacts__item-container .footer-contacts-txt {
     margin-left: 15px;
     text-transform: uppercase;
 }
 
 .footer__contacts-phone {
-    margin-left: 13px;
+    font-family: Bebas;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    font-size: 25px;
+    text-transform: uppercase;
 }
 
 .footer-social-contacts__item:hover {

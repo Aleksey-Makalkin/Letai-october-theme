@@ -40,9 +40,20 @@
 .popup-car__status {
     color: rgba(255,255,255,0.8);
     font-size: 17px;
-    background-color: #0E9C66;
     padding: 10px 23px;
     border-radius: 3px;
+}
+
+.popup-car__status_true {
+    background-color: #0E9C66;
+}
+
+.popup-car__status_false {
+    background-color: #D95E5E;
+}
+
+.popup-car__status.status_1 {
+    background-color: #D95E5E;
 }
 
 .popup-car__back {

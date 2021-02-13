@@ -8,6 +8,9 @@ function activeListenerElement(element) {
         })
     }
 
+    // ПРоверка статуса машины
+    document.querySelectorAll('.popup-car__status.status_1').forEach(el => el.textContent = 'Занят')
+
     element.querySelectorAll('.popup-car__back').forEach(el => {
         el.onclick = () => {
             element.style.display = 'none'
@@ -20,9 +23,9 @@ function activeListenerElement(element) {
         }
     })
 
-    element.querySelector('.personal-information-txt-click').onclick = () => {
-        element.querySelector('.personal-information-checkbox').click()
-    }
+    element.querySelectorAll('.personal-information-txt-click').forEach(el => {
+        el.onclick = () => element.querySelector('.personal-information-checkbox').click()
+    })
 
     const popupCarSlider = element.querySelector('.popup-car__slider')
     const popupImgLeftBtn = element.querySelector('.popup-car__slider-left-btn')
